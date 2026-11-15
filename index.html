@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Five Years of Us ♡ For Tavu, From Momo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-alabaster: #FAF7F2;
+      --bg-parchment: #F3EDE4;
+      --bg-linen: #EFE8DD;
+      --text-espresso: #2B2623;
+      --text-taupe: #6E655F;
+      --accent-sage: #7D8F82;
+      --accent-terracotta: #C48F7E;
+      --accent-gold: #D4B483;
+      --border-hairline: #E4DDD2;
+      --shadow-soft: 0 18px 45px rgba(43, 38, 35, 0.05);
+      --shadow-card: 0 10px 30px rgba(43, 38, 35, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-alabaster);
+      color: var(--text-espresso);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* Ambient floating warm dust & hollow hearts */
+    #ambient-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top Minimal Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 247, 242, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-taupe);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      color: var(--text-espresso);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-taupe);
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-espresso);
+    }
+
+    @media (max-width: 680px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Section Spacing */
+    section {
+      padding: 92px 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .eyebrow {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-terracotta);
+      font-weight: 500;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      color: var(--text-espresso);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-taupe);
+      max-width: 640px;
+      margin-bottom: 44px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 96px 0 88px;
+      text-align: center;
+    }
+
+    .origin-bubble-wrap {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .origin-date {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-taupe);
+      margin-bottom: 10px;
+    }
+
+    .chat-bubble-origin {
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      padding: 14px 26px;
+      border-radius: 22px 22px 22px 6px;
+      box-shadow: var(--shadow-soft);
+      font-size: 1.15rem;
+      color: var(--text-espresso);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .hollow-heart {
+      display: inline-block;
+      color: var(--accent-terracotta);
+      font-size: 1.25rem;
+      animation: gentlePulse 3.2s ease-in-out infinite;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.16); opacity: 1; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.3rem);
+      line-height: 1.12;
+      max-width: 820px;
+      margin: 0 auto 24px;
+    }
+
+    .hero p.lead {
+      font-size: 1.12rem;
+      color: var(--text-taupe);
+      max-width: 630px;
+      margin: 0 auto 44px;
+    }
+
+    /* Live Elapsed Counter */
+    .counter-card {
+      background: var(--bg-parchment);
+      border: 1px solid var(--border-hairline);
+      border-radius: 24px;
+      padding: 32px 28px;
+      max-width: 760px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-card);
+    }
+
+    .counter-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-taupe);
+      margin-bottom: 18px;
+    }
+
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .counter-box {
+      background: var(--bg-alabaster);
+      border: 1px solid var(--border-hairline);
+      border-radius: 16px;
+      padding: 16px 12px;
+    }
+
+    .counter-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.35rem;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--text-espresso);
+    }
+
+    .counter-unit {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-taupe);
+      margin-top: 4px;
+    }
+
+    .counter-footnote {
+      margin-top: 16px;
+      font-size: 0.86rem;
+      color: var(--text-taupe);
+      font-style: italic;
+    }
+
+    /* Story Milestones Grid */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .story-card {
+      background: var(--bg-parchment);
+      border: 1px solid var(--border-hairline);
+      border-radius: 22px;
+      padding: 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .story-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-sage);
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .story-card h3 {
+      font-size: 1.65rem;
+      margin-bottom: 12px;
+      color: var(--text-espresso);
+    }
+
+    .story-card p {
+      color: var(--text-taupe);
+      font-size: 0.97rem;
+    }
+
+    /* Scrapbook Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .polaroid {
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: 16px;
+      padding: 14px 14px 20px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .polaroid:hover {
+      transform: translateY(-5px) rotate(-0.5deg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .polaroid:nth-child(even):hover {
+      transform: translateY(-5px) rotate(0.5deg);
+    }
+
+    .photo-frame {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg-linen);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .polaroid:hover .photo-frame img {
+      transform: scale(1.03);
+    }
+
+    .photo-caption {
+      margin-top: 14px;
+      padding: 0 4px;
+    }
+
+    .photo-caption h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.28rem;
+      font-weight: 600;
+      color: var(--text-espresso);
+      margin-bottom: 4px;
+    }
+
+    .photo-caption p {
+      font-size: 0.86rem;
+      color: var(--text-taupe);
+      line-height: 1.5;
+    }
+
+    /* Anatomy of Us (90-Day WhatsApp Data) */
+    .stats-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 840px) {
+      .stats-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      background: var(--bg-parchment);
+      border: 1px solid var(--border-hairline);
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    .big-stat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .big-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.4rem;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--text-espresso);
+    }
+
+    .toggle-pill {
+      display: inline-flex;
+      background: var(--bg-alabaster);
+      border: 1px solid var(--border-hairline);
+      border-radius: 999px;
+      padding: 4px;
+    }
+
+    .toggle-btn {
+      border: none;
+      background: transparent;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: var(--text-taupe);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .toggle-btn.active {
+      background: var(--text-espresso);
+      color: #FFFFFF;
+    }
+
+    .duel-bar-wrap {
+      margin: 22px 0;
+    }
+
+    .duel-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .duel-track {
+      height: 14px;
+      background: var(--bg-alabaster);
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid var(--border-hairline);
+    }
+
+    .duel-fill-momo {
+      background: var(--accent-sage);
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+
+    .duel-fill-tavu {
+      background: var(--accent-terracotta);
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+
+    .mini-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .mini-box {
+      background: var(--bg-alabaster);
+      border: 1px solid var(--border-hairline);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .mini-box span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-taupe);
+      margin-bottom: 4px;
+    }
+
+    .mini-box strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--text-espresso);
+    }
+
+    /* Signature Words Explorer */
+    .word-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .word-chip {
+      background: var(--bg-alabaster);
+      border: 1px solid var(--border-hairline);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      color: var(--text-espresso);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .word-chip:hover, .word-chip.active {
+      background: var(--accent-terracotta);
+      color: #FFFFFF;
+      border-color: var(--accent-terracotta);
+    }
+
+    .word-chip small {
+      opacity: 0.8;
+      font-size: 0.76rem;
+    }
+
+    .word-story-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: 18px;
+      padding: 22px;
+      min-height: 150px;
+    }
+
+    .word-story-box h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .word-story-box p {
+      font-size: 0.94rem;
+      color: var(--text-taupe);
+    }
+
+    /* After Hours Flirty Section */
+    .after-hours {
+      background: #26211E;
+      color: #F6F1EA;
+      border-radius: 28px;
+      padding: 48px 40px;
+      margin-top: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+      .after-hours {
+        padding: 36px 24px;
+      }
+    }
+
+    .after-hours .eyebrow {
+      color: #E0A996;
+    }
+
+    .after-hours h2 {
+      color: #FAF7F2;
+      font-size: clamp(2rem, 3.8vw, 2.8rem);
+      margin-bottom: 14px;
+    }
+
+    .after-hours p.intro {
+      color: #CFC6BC;
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+
+    .flirt-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 820px) {
+      .flirt-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .flirt-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 18px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .flirt-card:hover {
+      background: rgba(255, 255, 255, 0.09);
+      transform: translateY(-3px);
+    }
+
+    .flirt-card .time-tag {
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E0A996;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .flirt-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.42rem;
+      color: #FAF7F2;
+      margin-bottom: 8px;
+    }
+
+    .flirt-card p {
+      font-size: 0.9rem;
+      color: #D6CEC4;
+      line-height: 1.65;
+    }
+
+    /* Closing Letter */
+    .letter-box {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: 26px;
+      padding: 48px 44px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (max-width: 600px) {
+      .letter-box {
+        padding: 32px 24px;
+      }
+    }
+
+    .letter-box p {
+      margin-bottom: 20px;
+      font-size: 1.03rem;
+      color: var(--text-espresso);
+    }
+
+    .letter-signoff {
+      margin-top: 28px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      color: var(--text-espresso);
+    }
+
+    .heart-trigger-wrap {
+      text-align: center;
+      margin-top: 38px;
+    }
+
+    .heart-btn {
+      background: var(--bg-parchment);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-espresso);
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-card);
+    }
+
+    .heart-btn:hover {
+      background: var(--accent-terracotta);
+      color: #FFFFFF;
+      border-color: var(--accent-terracotta);
+      transform: translateY(-2px);
+    }
+
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.4rem;
+      color: var(--accent-terracotta);
+      z-index: 999;
+      animation: floatUp 2.6s ease-out forwards;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.8); opacity: 1; }
+      100% { transform: translateY(-180px) scale(1.35); opacity: 0; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 42px 24px 64px;
+      color: var(--text-taupe);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="ambient-canvas"></canvas>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">Tavu &amp; Momo ♡</div>
+      <div class="nav-links">
+        <a href="#story">Our Story</a>
+        <a href="#scrapbook">Frames</a>
+        <a href="#chats">35,948 Messages</a>
+        <a href="#after-hours">After Hours</a>
+        <a href="#letter">For You</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="origin-bubble-wrap">
+        <span class="origin-date">July 20, 2020 &middot; Where it all started</span>
+        <div class="chat-bubble-origin">
+          <span>hello stranger</span>
+          <span class="hollow-heart">♡</span>
+        </div>
+      </div>
+
+      <h1>Five years of choosing you, and still counting every single day.</h1>
+      <p class="lead">
+        No flashy bouquets or loud clichés. Just every candid laugh, every late-night call across time zones, and the quiet magic of what we built from one simple message.
+      </p>
+
+      <div class="counter-card">
+        <div class="counter-label">Together since November 14, 2021 &middot; Celebrating Five Years</div>
+        <div class="counter-grid">
+          <div class="counter-box">
+            <div class="counter-num" id="cnt-years">5</div>
+            <div class="counter-unit">Years</div>
+          </div>
+          <div class="counter-box">
+            <div class="counter-num" id="cnt-days">1,826</div>
+            <div class="counter-unit">Days</div>
+          </div>
+          <div class="counter-box">
+            <div class="counter-num" id="cnt-hours">43,824</div>
+            <div class="counter-unit">Hours</div>
+          </div>
+          <div class="counter-box">
+            <div class="counter-num" id="cnt-mins">00</div>
+            <div class="counter-unit">Minutes</div>
+          </div>
+        </div>
+        <p class="counter-footnote">
+          From July 20, 2020 when you first texted "hello stranger ♡" to November 14, 2021 when you became mine, right up to today.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- OUR STORY MILESTONES -->
+  <section id="story">
+    <div class="container">
+      <span class="eyebrow">Chapters We Wrote</span>
+      <h2 class="section-title">The moments that made us, us.</h2>
+      <p class="section-subtitle">
+        We have never needed scripted romance. Our favorite memories are the ones where we simply lived in the moment.
+      </p>
+
+      <div class="story-grid">
+        <div class="story-card">
+          <span class="story-tag">July 20, 2020 &amp; November 14, 2021</span>
+          <h3>How I ruined your big reveal</h3>
+          <p>
+            It started with "hello stranger ♡" on WhatsApp in July 2020, leading to months of nonstop talking. And when November 14, 2021 finally came around and you had your whole sweet way planned to tell me I was your boyfriend, I completely ruined the surprise by casually introducing myself as your boyfriend first. Honestly, I would do it all over again just to see your reaction.
+          </p>
+        </div>
+
+        <div class="story-card">
+          <span class="story-tag">Swirling Gold &amp; Starlight</span>
+          <h3>Walking through Van Gogh together</h3>
+          <p>
+            Standing beneath curtains of warm golden lights and swirling brushstrokes at the Van Gogh exhibition with you felt like stepping inside a painting. While everyone else was busy posing, all I wanted to do was hold you close and look at the way your eyes lit up.
+          </p>
+        </div>
+
+        <div class="story-card">
+          <span class="story-tag">Rain-Washed Streets &amp; Coffee</span>
+          <h3>Our Bangalore days</h3>
+          <p>
+            Visiting you in Bangalore, walking down tree-lined avenues with your arms stretched out like you were flying, sneaking quick rides, and making ordinary errands feel like a mini vacation. Anywhere with you instantly feels like home.
+          </p>
+        </div>
+
+        <div class="story-card">
+          <span class="story-tag">Miles Apart, Never Distant</span>
+          <h3>Conquering long distance</h3>
+          <p>
+            Different cities, busy workdays, sleepy good mornings at odd hours, and counting down until the next airport hug. Long distance never weakened us; it only proved that no matter how far apart we are, you are always the closest person to my heart.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRAPBOOK GALLERY (ALL 12 PHOTOS STATICALLY EMBEDDED) -->
+  <section id="scrapbook">
+    <div class="container">
+      <span class="eyebrow">Unposed &amp; Real</span>
+      <h2 class="section-title">Twelve frames of my favorite person.</h2>
+      <p class="section-subtitle">
+        Because as you always say, we are not influencers trying to stage a backdrop. We are too busy actually living the moment.
+      </p>
+
+      <div class="gallery-grid">
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339689.jpg" alt="Looking at each other under golden lights" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Lost in the lights</h4>
+            <p>A whole room full of glowing gold, and I still only had eyes for you.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339688.jpg" alt="Wrapped in your arms under the Van Gogh lights" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Right where I belong</h4>
+            <p>Your arms around my neck, smiling like nobody else existed.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339685.jpg" alt="Arms outstretched walking down a green Bangalore street" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Bangalore breeze</h4>
+            <p>Walking ahead with your arms wide open, pure carefree Tavu energy.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339687.jpg" alt="Cozy mirror selfie together" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Quiet mirror check</h4>
+            <p>No dressing up needed. Just a lazy afternoon and you leaning into me.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339686.webp" alt="Smiling together in front of a green wall" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>That effortless smile</h4>
+            <p>One of my favorite photos of us simply because of how happy you look.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339684.jpg" alt="Back hug under evening lights" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Holding you close</h4>
+            <p>My favorite place in the world is right behind you with my arms wrapped around your waist.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339683.webp" alt="Sleeping on my shoulder during a metro ride" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Head on my shoulder</h4>
+            <p>Even on a crowded train ride, you resting on me makes everything calm.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339682.jpg" alt="Close up selfie smiling together" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Goofy &amp; happy</h4>
+            <p>Cheek to cheek, laughing at whatever silly thing we were just talking about.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339681.jpg" alt="Leaning on my shoulder with big smiles" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Pure comfort</h4>
+            <p>Five years in and your smile still gives me the exact same butterflies.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000339680.jpg" alt="Night out surrounded by bamboo and fairy lights" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>Date night glow</h4>
+            <p>Dressed up under the night lights, still my favorite date every single time.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000080233.jpg" alt="Two-wheeler ride selfie with helmet" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>On the road with you</h4>
+            <p>Wind in our faces, helmet on, and you peeking right over my shoulder.</p>
+          </div>
+        </article>
+
+        <article class="polaroid">
+          <div class="photo-frame">
+            <img src="1000049021.jpg" alt="Candid portrait of Tavu smiling in green ethnic wear" loading="lazy">
+          </div>
+          <div class="photo-caption">
+            <h4>My favorite view</h4>
+            <p>Candid, radiant, and effortlessly breathtaking. Forever my shona.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 90-DAY WHATSAPP ANALYTICS -->
+  <section id="chats">
+    <div class="container">
+      <span class="eyebrow">90-Day Snapshot &middot; Aug 15 to Nov 13, 2026</span>
+      <h2 class="section-title">35,948 reasons we never run out of things to say.</h2>
+      <p class="section-subtitle">
+        Even after five years, we still talk like we just met yesterday. Almost 400 messages every single day.
+      </p>
+
+      <div class="stats-layout">
+        <!-- Left Panel: Duel & Numbers -->
+        <div class="panel">
+          <div class="big-stat-header">
+            <div>
+              <div class="big-number" id="duel-total">35,948</div>
+              <div style="font-size:0.86rem; color:var(--text-taupe);">Total messages in 90 days</div>
+            </div>
+            <div class="toggle-pill">
+              <button class="toggle-btn active" onclick="setDuelMode('messages', this)">Messages</button>
+              <button class="toggle-btn" onclick="setDuelMode('words', this)">Words</button>
+            </div>
+          </div>
+
+          <div class="duel-bar-wrap">
+            <div class="duel-labels">
+              <span id="label-momo" style="color:var(--accent-sage);">Momo: 50% (17,993)</span>
+              <span id="label-tavu" style="color:var(--accent-terracotta);">Tavu: 50% (17,955)</span>
+            </div>
+            <div class="duel-track">
+              <div class="duel-fill-momo" id="bar-momo" style="width: 50.05%;"></div>
+              <div class="duel-fill-tavu" id="bar-tavu" style="width: 49.95%;"></div>
+            </div>
+          </div>
+
+          <div class="mini-metrics">
+            <div class="mini-box">
+              <span>Peak Chat Hour</span>
+              <strong>12:00 PM &amp; 12:00 AM</strong>
+            </div>
+            <div class="mini-box">
+              <span>Favorite Chat Days</span>
+              <strong>Thursdays &amp; Saturdays</strong>
+            </div>
+            <div class="mini-box">
+              <span>Momo's Vocabulary</span>
+              <strong>3,821 unique words</strong>
+            </div>
+            <div class="mini-box">
+              <span>Tavu's Word Count</span>
+              <strong>84,777 words</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Signature Words -->
+        <div class="panel">
+          <h3 style="font-size:1.65rem; margin-bottom:8px;">Our Signature Dictionary</h3>
+          <p style="font-size:0.9rem; color:var(--text-taupe); margin-bottom:18px;">
+            Tap any word from our chat history to see why it belongs to us.
+          </p>
+
+          <div class="word-chips">
+            <button class="word-chip active" onclick="showWord('shona', this)">shona <small>x658</small></button>
+            <button class="word-chip" onclick="showWord('momo', this)">momo <small>x584</small></button>
+            <button class="word-chip" onclick="showWord('tavu', this)">tavu <small>x639</small></button>
+            <button class="word-chip" onclick="showWord('baby', this)">baby <small>x492</small></button>
+            <button class="word-chip" onclick="showWord('baba', this)">baba <small>x310</small></button>
+            <button class="word-chip" onclick="showWord('forehead', this)">*forehead kiss*</button>
+          </div>
+
+          <div class="word-story-box" id="word-story-box">
+            <h4>"shona" &middot; Used 658 times by Momo</h4>
+            <p>
+              My favorite name for you when I am softening my voice, checking in on your day, or reminding you that whatever stress you are carrying, I have got you.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFTER HOURS: FLIRTY & UNFILTERED -->
+  <section id="after-hours">
+    <div class="container">
+      <div class="after-hours">
+        <span class="eyebrow">After Midnight &middot; Unfiltered</span>
+        <h2>Five years in, and I still cannot keep my hands off you.</h2>
+        <p class="intro">
+          We are not some polite, vanilla couple. Between the sweet good mornings and the forehead kisses, our chat history has plenty of late-night tension, teasing, and things we definitely cannot print on a greeting card.
+        </p>
+
+        <div class="flirt-cards">
+          <div class="flirt-card">
+            <span class="time-tag">12:19 AM &middot; Late Night</span>
+            <h4>"I wanna kiss you"</h4>
+            <p>
+              Whether we are in the same room or miles apart on a screen, you still drive me crazy the exact same way. One look at your photos and my focus is completely gone.
+            </p>
+          </div>
+
+          <div class="flirt-card">
+            <span class="time-tag">Our Little Secrets</span>
+            <h4>The tension between us</h4>
+            <p>
+              The way you tease me in texts, the late-night voice notes, and the undeniable chemistry we have had since day one. Five years has only made me want you more.
+            </p>
+          </div>
+
+          <div class="flirt-card">
+            <span class="time-tag">Next Time We Meet</span>
+            <h4>Consider this a promise</h4>
+            <p>
+              The second I have you in my arms again, there will be zero talking and plenty of making up for every single night we spent texting instead of touching.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING LOVE LETTER -->
+  <section id="letter">
+    <div class="container">
+      <div class="letter-box">
+        <span class="eyebrow">November 14, 2026</span>
+        <h2 class="section-title" style="margin-bottom:24px;">Happy Five Years, Tavu.</h2>
+
+        <p>
+          Looking back at July 20, 2020, neither of us knew that a simple "hello stranger ♡" would turn into my favorite part of every single day. Even when I accidentally spoiled your big boyfriend reveal on November 14, 2021, you still chose me, and you have kept choosing me every day since.
+        </p>
+        <p>
+          I love how real we are. I love that you hate fake posed photos and only care about living the moment. I love our chaotic Bangalore walks, standing under golden lights together, surviving long distance one late-night call at a time, and the fire between us that has never faded for even a second.
+        </p>
+        <p>
+          Thank you for being my calm, my best friend, my biggest distraction, and my whole heart. Here is to five years behind us and a lifetime of adventures ahead.
+        </p>
+
+        <div class="letter-signoff">
+          Forever yours,<br>
+          Momo ♡
+        </div>
+
+        <div class="heart-trigger-wrap">
+          <button class="heart-btn" onclick="spawnHearts(event)">
+            <span>Tap to send a</span>
+            <span style="color:var(--accent-terracotta); font-size:1.2rem;">♡</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Made with love by Momo for Tavu &middot; July 20, 2020 &amp; November 14, 2021 &middot; ♡
+  </footer>
+
+  <script>
+    // Live Elapsed Time since November 14, 2021
+    const anniversaryStart = new Date('2021-11-14T00:00:00');
+
+    function updateCounter() {
+      const now = new Date();
+      const diffMs = Math.max(0, now - anniversaryStart);
+      const totalMins = Math.floor(diffMs / 60000);
+      const totalHours = Math.floor(totalMins / 60);
+      const totalDays = Math.floor(totalHours / 24);
+      const years = Math.floor(totalDays / 365.2425);
+      const remMins = totalMins % 60;
+
+      document.getElementById('cnt-years').textContent = years;
+      document.getElementById('cnt-days').textContent = totalDays.toLocaleString();
+      document.getElementById('cnt-hours').textContent = totalHours.toLocaleString();
+      document.getElementById('cnt-mins').textContent = String(remMins).padStart(2, '0');
+    }
+    updateCounter();
+    setInterval(updateCounter, 15000);
+
+    // Toggle Messages vs Words Duel
+    function setDuelMode(mode, btn) {
+      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (mode === 'messages') {
+        document.getElementById('duel-total').textContent = '35,948';
+        document.getElementById('label-momo').textContent = 'Momo: 50% (17,993)';
+        document.getElementById('label-tavu').textContent = 'Tavu: 50% (17,955)';
+        document.getElementById('bar-momo').style.width = '50.05%';
+        document.getElementById('bar-tavu').style.width = '49.95%';
+      } else {
+        document.getElementById('duel-total').textContent = '162,830';
+        document.getElementById('label-momo').textContent = 'Momo: 48% (78,053 words)';
+        document.getElementById('label-tavu').textContent = 'Tavu: 52% (84,777 words)';
+        document.getElementById('bar-momo').style.width = '47.9%';
+        document.getElementById('bar-tavu').style.width = '52.1%';
+      }
+    }
+
+    // Signature Words Explorer
+    const wordData = {
+      shona: {
+        title: '"shona" · Used 658 times by Momo',
+        text: 'My favorite name for you when I am softening my voice, checking in on your day, or reminding you that whatever stress you are carrying, I have got you.'
+      },
+      momo: {
+        title: '"momo" · Used 584 times by Tavu',
+        text: 'Every "Morning momo" or "Cutie momo" from you instantly turns an ordinary day into a good one. Nobody else says it the way you do.'
+      },
+      tavu: {
+        title: '"tavu" · Used 639 times by Momo',
+        text: 'Usually stretched out as "tavuuuu" when I miss you, want your attention, or am waiting for you to wrap up a busy day so I can hear your voice.'
+      },
+      baby: {
+        title: '"baby" · Used 492 times by Momo',
+        text: 'Reserved for the softest moments, late-night whispers, and reminding you how deeply you are loved.'
+      },
+      baba: {
+        title: '"baba" · Our shared comfort word',
+        text: 'That effortless warmth in our Hinglish conversations when we are explaining our day, complaining about work, or being dramatic together.'
+      },
+      forehead: {
+        title: '*forehead kiss* · Signature gesture',
+        text: 'Our universal reset button across any distance. One *forehead kiss* in chat and everything feels safe, close, and right again.'
+      }
+    };
+
+    function showWord(key, btn) {
+      document.querySelectorAll('.word-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const box = document.getElementById('word-story-box');
+      box.innerHTML = `<h4>${wordData[key].title}</h4><p>${wordData[key].text}</p>`;
+    }
+
+    // Floating Hollow Hearts Button
+    function spawnHearts(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      for (let i = 0; i < 9; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.textContent = '♡';
+        const offsetX = (Math.random() - 0.5) * 140;
+        heart.style.left = `${rect.left + rect.width / 2 + offsetX}px`;
+        heart.style.top = `${rect.top - 10}px`;
+        heart.style.animationDelay = `${i * 0.08}s`;
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 2700);
+      }
+    }
+
+    // Subtle Ambient Canvas Dust & Hollow Hearts
+    const canvas = document.getElementById('ambient-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles;
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = Array.from({ length: 24 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 2 + 1,
+        vy: -(Math.random() * 0.25 + 0.08),
+        vx: (Math.random() - 0.5) * 0.15,
+        alpha: Math.random() * 0.35 + 0.1
+      }));
+    }
+
+    function animateCanvas() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.y += p.vy;
+        p.x += p.vx;
+        if (p.y < -10) p.y = height + 10;
+        if (p.x < -10) p.x = width + 10;
+        if (p.x > width + 10) p.x = -10;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(196, 143, 126, ${p.alpha})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(animateCanvas);
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+    animateCanvas();
+  </script>
+</body>
+</html>
