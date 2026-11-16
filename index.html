@@ -8,7 +8,7 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Clean Airy Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -47,6 +47,7 @@
   </script>
 
   <style>
+    /* Base editorial styling */
     body {
       background-color: #FAF7F2;
       color: #2C2A29;
@@ -55,11 +56,13 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Subtle paper grain overlay */
     .paper-texture {
       background-image: radial-gradient(rgba(44, 42, 41, 0.03) 1px, transparent 0);
       background-size: 24px 24px;
     }
 
+    /* Gentle scroll reveal animation */
     .reveal {
       opacity: 0;
       transform: translateY(22px);
@@ -72,6 +75,7 @@
       transform: translateY(0);
     }
 
+    /* Floating dust / light particles canvas */
     #dust-canvas {
       position: fixed;
       inset: 0;
@@ -79,6 +83,7 @@
       z-index: 1;
     }
 
+    /* Floating hollow heart animation when tapped */
     @keyframes floatHeartUp {
       0% {
         opacity: 0;
@@ -104,6 +109,18 @@
       user-select: none;
     }
 
+    /* Interactive Flip / Reveal Note Cards */
+    .note-card {
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s ease,
+        background-color 0.4s ease;
+    }
+
+    .note-card:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Custom subtle scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -114,7 +131,11 @@
       background: #D7CEC2;
       border-radius: 9999px;
     }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #BDB1A1;
+    }
 
+    /* Soft pulse on hollow heart */
     @keyframes gentleBreathe {
       0%, 100% {
         transform: scale(1);
@@ -129,13 +150,28 @@
       display: inline-block;
       animation: gentleBreathe 3.8s ease-in-out infinite;
     }
+
+    /* Photo frames: the placeholder sits underneath the image, so if a file
+       is ever missing the soft heart placeholder still shows instead of a broken icon */
+    .frame-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .frame-video {
+      object-fit: contain;
+      background: #2C2A29;
+    }
   </style>
 </head>
 <body class="paper-texture selection:bg-terracottaSoft selection:text-espresso relative">
 
+  <!-- Ambient Floating Dust & Warm Light Canvas -->
   <canvas id="dust-canvas" aria-hidden="true"></canvas>
 
-  <!-- Navigation -->
+  <!-- Minimalist Floating Top Nav -->
   <header class="sticky top-0 z-30 backdrop-blur-md bg-alabaster/80 border-b border-hairline/70">
     <div class="max-w-5xl mx-auto px-5 sm:px-8 h-14 flex items-center justify-between text-xs sm:text-sm tracking-wide text-espressoMuted">
       <a href="#top" class="font-serif italic text-base sm:text-lg text-espresso flex items-center gap-2">
@@ -145,7 +181,8 @@
       <nav class="hidden sm:flex items-center gap-7">
         <a href="#anatomy" class="hover:text-espresso transition-colors">90 Days of Us</a>
         <a href="#moments" class="hover:text-espresso transition-colors">Candid Frames</a>
-        <a href="#after-hours" class="hover:text-espresso transition-colors">After Hours</a>
+        <a href="#motion" class="hover:text-espresso transition-colors">Moving Moments</a>
+        <a href="#little-things" class="hover:text-espresso transition-colors">Little Things</a>
         <a href="#letter" class="hover:text-espresso transition-colors">A Note</a>
       </nav>
       <button
@@ -161,13 +198,16 @@
 
   <main id="top" class="relative z-10">
 
-    <!-- HERO SECTION -->
+    <!-- ========================================================= -->
+    <!-- 1. HERO SECTION: "WHERE IT STARTED"                       -->
+    <!-- ========================================================= -->
     <section class="max-w-4xl mx-auto px-5 sm:px-8 pt-16 pb-20 sm:pt-24 sm:pb-28 text-center">
       <div class="reveal">
         <p class="uppercase tracking-[0.22em] text-[11px] sm:text-xs text-sage font-medium mb-5">
-          July 20, 2020 to Present
+          July 20, 2020 &nbsp;—&nbsp; Present
         </p>
 
+        <!-- Recreated First WhatsApp Message Bubble -->
         <div class="inline-flex flex-col items-center mb-9">
           <div class="relative bg-white/90 border border-hairline rounded-2xl rounded-bl-sm px-6 py-4 shadow-soft max-w-xs sm:max-w-sm">
             <p class="font-sans text-base sm:text-lg text-espresso tracking-normal flex items-center justify-center gap-2">
@@ -186,54 +226,57 @@
         </div>
 
         <h1 class="font-serif text-4xl sm:text-6xl md:text-[64px] font-normal text-espresso leading-[1.12] tracking-tight max-w-3xl mx-auto">
-          No loud gestures. Just five years of choosing each other in the quiet moments.
+          No loud gestures. Just six years of choosing each other in the quiet moments.
         </h1>
 
         <p class="mt-6 text-sm sm:text-base text-espressoMuted max-w-xl mx-auto leading-relaxed font-light">
-          You never cared for grand clichés or bouquets that fade in a week. You love what is real, unposed, and deeply felt. So here is a small, quiet corner made just for you, built from our own words, rhythms, and memories.
+          You never cared for grand clichés or bouquets that fade in a week. You love what is real, unposed, and deeply felt. So here is a small, quiet corner made just for you—built from our own words, rhythms, and memories.
         </p>
 
-        <!-- Live Elapsed Time Counter -->
+        <!-- Live Elapsed Time Counter since July 20, 2020 -->
         <div class="mt-12 bg-parchment/85 border border-hairline rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto shadow-card">
           <p class="text-[11px] uppercase tracking-[0.2em] text-espressoMuted mb-4">
-            Time elapsed since November 14, 2021 (Five Years Together)
+            Time elapsed since “hello stranger ♡”
           </p>
           <div id="live-counter" class="grid grid-cols-4 gap-2 sm:gap-5 text-center">
             <div class="bg-alabaster/90 rounded-2xl py-3.5 px-2 border border-hairline/70">
-              <span id="cnt-years" class="block font-serif text-2xl sm:text-4xl text-espresso font-medium">5</span>
+              <span id="cnt-years" class="block font-serif text-2xl sm:text-4xl text-espresso font-medium">6</span>
               <span class="text-[11px] text-espressoMuted tracking-wide">years</span>
             </div>
             <div class="bg-alabaster/90 rounded-2xl py-3.5 px-2 border border-hairline/70">
-              <span id="cnt-days" class="block font-serif text-2xl sm:text-4xl text-espresso font-medium">1,826</span>
+              <span id="cnt-months" class="block font-serif text-2xl sm:text-4xl text-espresso font-medium">3</span>
+              <span class="text-[11px] text-espressoMuted tracking-wide">months</span>
+            </div>
+            <div class="bg-alabaster/90 rounded-2xl py-3.5 px-2 border border-hairline/70">
+              <span id="cnt-days" class="block font-serif text-2xl sm:text-4xl text-espresso font-medium">25</span>
               <span class="text-[11px] text-espressoMuted tracking-wide">days</span>
             </div>
             <div class="bg-alabaster/90 rounded-2xl py-3.5 px-2 border border-hairline/70">
-              <span id="cnt-hours" class="block font-serif text-2xl sm:text-4xl text-espresso font-medium">43,824</span>
+              <span id="cnt-hours" class="block font-serif text-2xl sm:text-4xl text-terracotta font-medium">00</span>
               <span class="text-[11px] text-espressoMuted tracking-wide">hours</span>
             </div>
-            <div class="bg-alabaster/90 rounded-2xl py-3.5 px-2 border border-hairline/70">
-              <span id="cnt-mins" class="block font-serif text-2xl sm:text-4xl text-terracotta font-medium">00</span>
-              <span class="text-[11px] text-espressoMuted tracking-wide">minutes</span>
-            </div>
           </div>
-          <p class="mt-3.5 text-xs text-espressoMuted/80 font-light">
-            From July 20, 2020 when you first texted to November 14, 2021 when you became mine, right up to today.
+          <p id="live-seconds-note" class="mt-3.5 text-xs text-espressoMuted/80 font-light">
+            And counting every quiet second together.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- Hairline Divider with Hollow Heart -->
     <div class="max-w-3xl mx-auto px-6 flex items-center gap-4 opacity-70">
       <div class="h-px bg-hairline flex-1"></div>
       <span class="text-terracotta text-sm">♡</span>
       <div class="h-px bg-hairline flex-1"></div>
     </div>
 
-    <!-- ANATOMY OF US (90-DAY WHATSAPP STATS) -->
+    <!-- ========================================================= -->
+    <!-- 2. THE ANATOMY OF US (90-DAY WHATSAPP SNAPSHOT)           -->
+    <!-- ========================================================= -->
     <section id="anatomy" class="max-w-5xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
       <div class="reveal text-center max-w-2xl mx-auto mb-14">
         <p class="uppercase tracking-[0.22em] text-[11px] text-sage font-medium mb-3">
-          Aug 15 to Nov 13, 2026 &nbsp;•&nbsp; A 90-Day Snapshot
+          Aug 15 – Nov 13, 2026 &nbsp;•&nbsp; A 90-Day Snapshot
         </p>
         <h2 class="font-serif text-3xl sm:text-5xl font-normal text-espresso leading-tight">
           The Anatomy of Us
@@ -243,8 +286,9 @@
         </p>
       </div>
 
-      <!-- Stats Row -->
+      <!-- Top Stat Row: Total Messages & The Exact 50/50 Split -->
       <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
+        <!-- Total Messages Card -->
         <div class="lg:col-span-5 bg-parchment rounded-3xl p-7 sm:p-8 border border-hairline shadow-card flex flex-col justify-between">
           <div>
             <span class="inline-block text-xs uppercase tracking-[0.18em] text-sage mb-3">
@@ -258,10 +302,11 @@
             </p>
           </div>
           <div class="mt-6 pt-5 border-t border-hairline/80 text-xs sm:text-sm text-espressoMuted font-light leading-relaxed">
-            That is roughly <span class="text-espresso font-medium">399 messages every single day</span>.
+            That’s roughly <span class="text-espresso font-medium">399 messages every single day</span>—good mornings, sleepy check-ins, shared jokes, and making sure the other got home safe.
           </div>
         </div>
 
+        <!-- Exact 50/50 Split Interactive Toggle Card -->
         <div class="lg:col-span-7 bg-parchment rounded-3xl p-7 sm:p-8 border border-hairline shadow-card flex flex-col justify-between">
           <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
             <div>
@@ -272,6 +317,7 @@
                 Literally Half & Half
               </h3>
             </div>
+            <!-- Interactive Toggle between Messages & Words -->
             <div class="inline-flex rounded-full bg-alabaster p-1 border border-hairline text-xs">
               <button
                 id="btn-split-msgs"
@@ -290,10 +336,11 @@
             </div>
           </div>
 
+          <!-- Split Labels -->
           <div class="space-y-4 my-2">
             <div class="flex justify-between items-end text-sm">
               <div>
-                <span class="font-medium text-espresso">Momo</span>
+                <span class="font-medium text-espresso">Mukund</span>
                 <span id="mukund-stat" class="block text-xs text-espressoMuted mt-0.5">17,993 messages (50.05%)</span>
               </div>
               <div class="text-right">
@@ -302,6 +349,7 @@
               </div>
             </div>
 
+            <!-- Soft Visual Comparison Bar -->
             <div class="h-4 w-full rounded-full bg-alabaster overflow-hidden flex p-0.5 border border-hairline">
               <div
                 id="bar-mukund"
@@ -323,7 +371,7 @@
         </div>
       </div>
 
-      <!-- Signature Words Explorer -->
+      <!-- Signature Words Interactive Explorer -->
       <div class="reveal bg-parchment rounded-3xl p-7 sm:p-10 border border-hairline shadow-card mb-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-7">
           <div>
@@ -335,57 +383,89 @@
             </h3>
           </div>
           <p class="text-xs sm:text-sm text-espressoMuted font-light max-w-md">
-            Tap any word below to see how many times we said it and why it belongs to us.
+            Tap any word below to see how many times we said it—and why it belongs to us.
           </p>
         </div>
 
+        <!-- Word Pills Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+          <!-- Mukund's Words -->
           <div class="bg-alabaster/75 rounded-2xl p-5 border border-hairline/80">
             <p class="text-[11px] uppercase tracking-[0.18em] text-sage font-medium mb-3.5">
-              Words Momo Says Most
+              Words Mukund Says Most
             </p>
             <div class="flex flex-wrap gap-2.5">
-              <button onclick="selectWord('shona')" data-word="shona" class="word-pill active-pill px-4 py-2 rounded-full text-sm border border-sage bg-sage text-alabaster transition-all flex items-center gap-2">
+              <button
+                onclick="selectWord('shona')"
+                data-word="shona"
+                class="word-pill active-pill px-4 py-2 rounded-full text-sm border border-sage bg-sage text-alabaster transition-all flex items-center gap-2"
+              >
                 <span>“shona”</span>
                 <span class="text-[11px] opacity-85">658×</span>
               </button>
-              <button onclick="selectWord('tavu')" data-word="tavu" class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-sage transition-all flex items-center gap-2">
+              <button
+                onclick="selectWord('tavu')"
+                data-word="tavu"
+                class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-sage transition-all flex items-center gap-2"
+              >
                 <span>“tavu”</span>
                 <span class="text-[11px] text-espressoMuted">639×</span>
               </button>
-              <button onclick="selectWord('baby')" data-word="baby" class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-sage transition-all flex items-center gap-2">
+              <button
+                onclick="selectWord('baby')"
+                data-word="baby"
+                class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-sage transition-all flex items-center gap-2"
+              >
                 <span>“baby”</span>
                 <span class="text-[11px] text-espressoMuted">492×</span>
               </button>
             </div>
           </div>
 
+          <!-- Tavu's Words -->
           <div class="bg-alabaster/75 rounded-2xl p-5 border border-hairline/80">
             <p class="text-[11px] uppercase tracking-[0.18em] text-terracotta font-medium mb-3.5">
               Words Tavu Says Most
             </p>
             <div class="flex flex-wrap gap-2.5">
-              <button onclick="selectWord('momo')" data-word="momo" class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-terracotta transition-all flex items-center gap-2">
+              <button
+                onclick="selectWord('momo')"
+                data-word="momo"
+                class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-terracotta transition-all flex items-center gap-2"
+              >
                 <span>“momo”</span>
                 <span class="text-[11px] text-espressoMuted">584×</span>
               </button>
-              <button onclick="selectWord('its')" data-word="its" class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-terracotta transition-all flex items-center gap-2">
+              <button
+                onclick="selectWord('its')"
+                data-word="its"
+                class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-terracotta transition-all flex items-center gap-2"
+              >
                 <span>“it’s”</span>
                 <span class="text-[11px] text-espressoMuted">654×</span>
               </button>
-              <button onclick="selectWord('dont')" data-word="dont" class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-terracotta transition-all flex items-center gap-2">
+              <button
+                onclick="selectWord('dont')"
+                data-word="dont"
+                class="word-pill px-4 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-terracotta transition-all flex items-center gap-2"
+              >
                 <span>“don’t”</span>
                 <span class="text-[11px] text-espressoMuted">530×</span>
               </button>
             </div>
           </div>
 
+          <!-- Center of the Word Cloud -->
           <div class="bg-alabaster/75 rounded-2xl p-5 border border-hairline/80">
             <p class="text-[11px] uppercase tracking-[0.18em] text-espressoMuted font-medium mb-3.5">
               Center of Our Word Cloud
             </p>
             <div class="flex flex-wrap gap-2.5">
-              <button onclick="selectWord('love')" data-word="love" class="word-pill px-5 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-terracotta transition-all flex items-center gap-2 font-serif italic text-base">
+              <button
+                onclick="selectWord('love')"
+                data-word="love"
+                class="word-pill px-5 py-2 rounded-full text-sm border border-hairline bg-parchment text-espresso hover:border-terracotta transition-all flex items-center gap-2 font-serif italic text-base"
+              >
                 <span>“love”</span>
                 <span class="text-terracotta not-italic text-xs">♡ #1</span>
               </button>
@@ -393,252 +473,564 @@
           </div>
         </div>
 
+        <!-- Dynamic Word Story Box -->
         <div id="word-detail-box" class="mt-6 bg-alabaster rounded-2xl p-6 border border-hairline transition-all duration-300">
           <div class="flex items-start gap-4">
             <span class="text-terracotta text-xl mt-0.5">♡</span>
             <div>
               <h4 id="word-detail-title" class="font-serif text-xl sm:text-2xl text-espresso">
-                “shona” — said 658 times by Momo
+                “shona” — said 658 times by Mukund
               </h4>
               <p id="word-detail-desc" class="mt-1.5 text-xs sm:text-sm text-espressoMuted font-light leading-relaxed">
-                More than seven times every single day, whether softening a busy afternoon, checking in after work, or reminding you that you are always cared for.
+                More than seven times every single day—whether softening a busy afternoon, checking in after work, or reminding you that you’re always cared for.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Row: Our Rhythm (Hours, Days, & Top Emojis) -->
+      <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Peak Hours -->
+        <div class="bg-parchment rounded-3xl p-6 sm:p-7 border border-hairline shadow-card">
+          <span class="text-[11px] uppercase tracking-[0.18em] text-sage font-medium">
+            Around The Clock
+          </span>
+          <h4 class="font-serif text-2xl text-espresso mt-1.5">
+            12:00 PM & 12:00 AM
+          </h4>
+          <p class="text-xs text-espressoMuted font-light mt-2 leading-relaxed">
+            Our two sacred peaks: midday check-ins right at noon, and quiet late-night talks when the rest of the world goes to sleep.
+          </p>
+          <!-- Mini minimalist hour curve -->
+          <div class="mt-5 pt-4 border-t border-hairline/70">
+            <div class="flex items-end justify-between h-14 gap-1.5 px-1">
+              <div class="w-full bg-terracotta/50 rounded-t-md h-[48%]" title="12 AM"></div>
+              <div class="w-full bg-sage/30 rounded-t-md h-[22%]" title="3 AM"></div>
+              <div class="w-full bg-sage/35 rounded-t-md h-[32%]" title="6 AM"></div>
+              <div class="w-full bg-sage/55 rounded-t-md h-[58%]" title="9 AM"></div>
+              <div class="w-full bg-terracotta rounded-t-md h-[100%]" title="12 PM Peak"></div>
+              <div class="w-full bg-sage/75 rounded-t-md h-[82%]" title="2 PM"></div>
+              <div class="w-full bg-sage/30 rounded-t-md h-[25%]" title="6 PM"></div>
+              <div class="w-full bg-sage/50 rounded-t-md h-[45%]" title="11 PM"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-espressoMuted mt-1.5">
+              <span>12 AM</span>
+              <span class="text-terracotta font-medium">12 PM</span>
+              <span>11 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Favorite Days -->
+        <div class="bg-parchment rounded-3xl p-6 sm:p-7 border border-hairline shadow-card">
+          <span class="text-[11px] uppercase tracking-[0.18em] text-sage font-medium">
+            Weekly Pulse
+          </span>
+          <h4 class="font-serif text-2xl text-espresso mt-1.5">
+            Thursdays & Saturdays
+          </h4>
+          <p class="text-xs text-espressoMuted font-light mt-2 leading-relaxed">
+            Our most talkative days of the week—catching up before the weekend and sharing every unhurried Saturday moment together.
+          </p>
+          <div class="mt-5 pt-4 border-t border-hairline/70 grid grid-cols-7 gap-1.5 text-center">
+            <div class="py-2 rounded-xl bg-alabaster text-[10px] text-espressoMuted">M</div>
+            <div class="py-2 rounded-xl bg-alabaster text-[10px] text-espressoMuted">T</div>
+            <div class="py-2 rounded-xl bg-alabaster text-[10px] text-espressoMuted">W</div>
+            <div class="py-2 rounded-xl bg-sage text-[10px] text-alabaster font-medium shadow-sm">Th</div>
+            <div class="py-2 rounded-xl bg-alabaster text-[10px] text-espressoMuted">F</div>
+            <div class="py-2 rounded-xl bg-terracotta text-[10px] text-alabaster font-medium shadow-sm">Sa</div>
+            <div class="py-2 rounded-xl bg-alabaster text-[10px] text-espressoMuted">Su</div>
+          </div>
+        </div>
+
+        <!-- Top Emojis -->
+        <div class="bg-parchment rounded-3xl p-6 sm:p-7 border border-hairline shadow-card">
+          <span class="text-[11px] uppercase tracking-[0.18em] text-terracotta font-medium">
+            Unspoken Expressions
+          </span>
+          <h4 class="font-serif text-2xl text-espresso mt-1.5">
+            4,751 Soft Eyes
+          </h4>
+          <p class="text-xs text-espressoMuted font-light mt-2 leading-relaxed">
+            Our top shared language when words aren’t enough—led overwhelmingly by <span class="text-espresso font-medium">🥺</span> (3,112× from you, 1,639× from Tavu).
+          </p>
+          <div class="mt-5 pt-4 border-t border-hairline/70 flex items-center justify-between px-2">
+            <div class="text-center">
+              <span class="text-2xl block">🥺</span>
+              <span class="text-[10px] text-espressoMuted mt-1 block">4,751</span>
+            </div>
+            <div class="text-center">
+              <span class="text-2xl block">😂</span>
+              <span class="text-[10px] text-espressoMuted mt-1 block">2,002</span>
+            </div>
+            <div class="text-center">
+              <span class="text-2xl block">😭</span>
+              <span class="text-[10px] text-espressoMuted mt-1 block">1,044</span>
+            </div>
+            <div class="text-center">
+              <span class="text-2xl block">🥰</span>
+              <span class="text-[10px] text-espressoMuted mt-1 block">625</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CANDID MOMENTS & POLAROID SCRAPBOOK (STATICALLY REFERENCED IMAGES) -->
+    <!-- ========================================================= -->
+    <!-- 3. CANDID MEMORIES & POLAROID SCRAPBOOK                   -->
+    <!-- Photos load from the repo root by filename (relative path) -->
+    <!-- Filenames are CASE-SENSITIVE on GitHub Pages               -->
+    <!-- ========================================================= -->
     <section id="moments" class="max-w-5xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
-      <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div class="max-w-xl">
-          <p class="uppercase tracking-[0.22em] text-[11px] text-terracotta font-medium mb-3">
-            “I only take candid pictures… live the moment”
-          </p>
-          <h2 class="font-serif text-3xl sm:text-5xl font-normal text-espresso leading-tight">
-            Unposed & Real
-          </h2>
-          <p class="mt-3 text-sm sm:text-base text-espressoMuted font-light leading-relaxed">
-            Never for the camera, never for show, just the real seconds in between.
-          </p>
-        </div>
-      </div>
-
-      <!-- 12 Permanently Embedded Photos Grid -->
-      <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-        
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339689.jpg" alt="Golden lights" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Lost in the golden lights</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Staring at you when the whole room was glowing</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339688.jpg" alt="Wrapped in arms" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Right where I belong</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Holding you close under the starlight</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339685.jpg" alt="Bangalore walk" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Bangalore breeze</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Walking ahead with your arms wide open</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339687.jpg" alt="Mirror selfie" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Quiet mirror check</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Lazy afternoon and you leaning into me</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339686.webp" alt="Green wall smile" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">That effortless smile</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Radiant and happy against the green</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339684.jpg" alt="Back hug" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Holding you close</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Arms wrapped around your waist</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339683.webp" alt="Metro ride" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Head on my shoulder</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Peaceful even on a crowded train</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339682.jpg" alt="Goofy selfie" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Goofy & happy</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Cheek to cheek and laughing</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339681.jpg" alt="Butterflies" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Pure comfort</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Your smile still gives me butterflies</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000339680.jpg" alt="Bamboo date night" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">Date night glow</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Under the fairy lights and bamboo</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000080233.jpg" alt="Bike ride" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">On the road with you</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Wind in our faces and you peeking over</p>
-          </figcaption>
-        </figure>
-
-        <figure class="bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
-          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
-            <img src="1000049021.jpg" alt="Ethnic wear" class="w-full h-full object-cover">
-          </div>
-          <figcaption class="mt-4 px-1">
-            <p class="font-serif italic text-lg text-espresso leading-snug">My favorite view</p>
-            <p class="text-[11px] text-espressoMuted mt-1">Candid, radiant, and breathtaking</p>
-          </figcaption>
-        </figure>
-
-      </div>
-    </section>
-
-    <!-- AFTER HOURS SECTION -->
-    <section id="after-hours" class="max-w-5xl mx-auto px-5 sm:px-8 py-20">
-      <div class="bg-[#26211E] text-[#F6F1EA] rounded-3xl p-8 sm:p-12 shadow-soft">
-        <span class="text-xs uppercase tracking-[0.2em] text-[#E0A996] font-medium block mb-3">After Midnight &middot; Unfiltered</span>
-        <h2 class="font-serif text-3xl sm:text-4xl text-[#FAF7F2] mb-4">Five years in, and I still cannot keep my hands off you.</h2>
-        <p class="text-[#CFC6BC] text-sm sm:text-base font-light max-w-2xl mb-8">
-          We are not some polite, vanilla couple. Between the sweet good mornings and the forehead kisses, our chat history has plenty of late-night tension, teasing, and things we definitely cannot print on a greeting card.
+      <div class="reveal max-w-xl mb-12">
+        <p class="uppercase tracking-[0.22em] text-[11px] text-terracotta font-medium mb-3">
+          “I only take candid pictures… live the moment”
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
-            <span class="text-[11px] uppercase tracking-[0.14em] text-[#E0A996] block mb-2">12:19 AM &middot; Late Night</span>
-            <h4 class="font-serif text-xl text-[#FAF7F2] mb-2">“I wanna kiss you”</h4>
-            <p class="text-xs text-[#D6CEC4] leading-relaxed">Whether we are in the same room or miles apart on a screen, you still drive me crazy the exact same way.</p>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-espresso leading-tight">
+          Unposed & Real
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-espressoMuted font-light leading-relaxed">
+          Never for the camera, never for show—just the real seconds in between.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+
+        <!-- Frame 1 · Metro -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-parchment to-parchmentDark/60">
+              <span class="text-terracotta text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 01</p>
+            </div>
+            <img class="frame-media" src="1_tavu_asleep_in_metro.jpeg" alt="Quiet transit rides, resting on your shoulder" loading="lazy" onerror="this.style.display='none'" />
           </div>
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
-            <span class="text-[11px] uppercase tracking-[0.14em] text-[#E0A996] block mb-2">Our Little Secrets</span>
-            <h4 class="font-serif text-xl text-[#FAF7F2] mb-2">The tension between us</h4>
-            <p class="text-xs text-[#D6CEC4] leading-relaxed">The way you tease me in texts, the late-night voice notes, and the undeniable chemistry we have had since day one.</p>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Quiet transit rides, resting on your shoulder</p>
+            <p class="text-[11px] text-espressoMuted mt-1">Peaceful even in the middle of a crowded train</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 2 · Two-wheeler -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-sageSoft/70 to-parchment">
+              <span class="text-sage text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 02</p>
+            </div>
+            <img class="frame-media" src="bangloreplane.jpeg" alt="Two-wheeler rides and wind in our hair" loading="lazy" onerror="this.style.display='none'" />
           </div>
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
-            <span class="text-[11px] uppercase tracking-[0.14em] text-[#E0A996] block mb-2">Next Time We Meet</span>
-            <h4 class="font-serif text-xl text-[#FAF7F2] mb-2">Consider this a promise</h4>
-            <p class="text-xs text-[#D6CEC4] leading-relaxed">The second I have you in my arms again, there will be zero talking and plenty of making up for every single night apart.</p>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Two-wheeler rides & wind in our hair</p>
+            <p class="text-[11px] text-espressoMuted mt-1">Nowhere in particular, smiling the whole way</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 3 · Mirror selfie -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-terracottaSoft/60 to-parchment">
+              <span class="text-terracotta text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 03</p>
+            </div>
+            <img class="frame-media" src="3__mirrorselfie.jpeg" alt="Wooden-framed mirror selfies" loading="lazy" onerror="this.style.display='none'" />
           </div>
-        </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Quiet mornings, mirror selfies</p>
+            <p class="text-[11px] text-espressoMuted mt-1">The simplest, happiest version of us</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 4 · Garden evening -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-parchment to-sageSoft/60">
+              <span class="text-sage text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 04</p>
+            </div>
+            <img class="frame-media" src="2__1000080233.jpg" alt="Evenings under the warm lights" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Evenings under the warm lights</p>
+            <p class="text-[11px] text-espressoMuted mt-1">Quiet dinners and easy walks after dusk</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 5 · Gallery smiles -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-parchmentDark/50 to-parchment">
+              <span class="text-terracotta text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 05</p>
+            </div>
+            <img class="frame-media" src="katha.jpeg" alt="Unfiltered laughs and leaning into each other" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Unfiltered laughs, leaning in</p>
+            <p class="text-[11px] text-espressoMuted mt-1">The smile that makes every room lighter</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 6 · Green wall -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-terracottaSoft/50 to-sageSoft/50">
+              <span class="text-espresso text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 06</p>
+            </div>
+            <img class="frame-media" src="4__first_pic_in_le_vantage.jpeg" alt="Dressed up, still just us" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Dressed up, still just us</p>
+            <p class="text-[11px] text-espressoMuted mt-1">Our very first picture at Le Vantage</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 7 · Van Gogh lights 1 -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-parchment to-parchmentDark/60">
+              <span class="text-terracotta text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 07</p>
+            </div>
+            <img class="frame-media" src="vangough1.jpeg" alt="A thousand tiny lights, one favourite person" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">A thousand tiny lights</p>
+            <p class="text-[11px] text-espressoMuted mt-1">And I still only looked at you</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 8 · Van Gogh lights 2 -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-sageSoft/70 to-parchment">
+              <span class="text-sage text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 08</p>
+            </div>
+            <img class="frame-media" src="vangoung2.jpeg" alt="Held close under the glowing lights" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Held close, glowing</p>
+            <p class="text-[11px] text-espressoMuted mt-1">The whole room faded out for a moment</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 9 · Bangalore walk -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-terracottaSoft/60 to-parchment">
+              <span class="text-terracotta text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 09</p>
+            </div>
+            <img class="frame-media" src="5__banglorepic.jpeg" alt="Wandering the streets of Bangalore" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Wandering Bangalore, arms wide</p>
+            <p class="text-[11px] text-espressoMuted mt-1">Free, balanced, and completely yourself</p>
+          </figcaption>
+        </figure>
+
+        <!-- Frame 10 · Traditionals -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid transition-transform duration-500 hover:-translate-y-1">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-parchment">
+            <div class="absolute inset-0 p-6 text-center flex flex-col items-center justify-center bg-gradient-to-b from-parchment to-sageSoft/60">
+              <span class="text-sage text-2xl mb-3">♡</span>
+              <p class="font-serif italic text-lg text-espresso/80">Frame 10</p>
+            </div>
+            <img class="frame-media" src="6__traditionals.jpg" alt="Jhumkas, festive evenings and golden-hour glances" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Jhumkas & festive evenings</p>
+            <p class="text-[11px] text-espressoMuted mt-1">Captured without ever asking you to pose</p>
+          </figcaption>
+        </figure>
+
       </div>
     </section>
 
-    <!-- CLOSING LOVE LETTER -->
-    <section id="letter" class="max-w-3xl mx-auto px-5 sm:px-8 py-20">
-      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-hairline shadow-soft text-left">
-        <span class="text-xs uppercase tracking-[0.2em] text-terracotta font-medium block mb-3">November 14, 2026</span>
-        <h2 class="font-serif text-3xl sm:text-4xl text-espresso mb-6">Happy Five Years, Tavu.</h2>
-        <div class="space-y-4 text-sm sm:text-base text-espressoMuted font-light leading-relaxed">
-          <p>
-            Looking back at July 20, 2020, neither of us knew that a simple "hello stranger ♡" would turn into my favorite part of every single day. Even when I accidentally spoiled your big boyfriend reveal on November 14, 2021, you still chose me, and you have kept choosing me every day since.
+    <!-- ========================================================= -->
+    <!-- 3b. MOVING MOMENTS (VIDEOS)                               -->
+    <!-- ========================================================= -->
+    <section id="motion" class="max-w-5xl mx-auto px-5 sm:px-8 pb-20 sm:pb-28">
+      <div class="reveal max-w-xl mb-12">
+        <p class="uppercase tracking-[0.22em] text-[11px] text-sage font-medium mb-3">
+          Tap play
+        </p>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-espresso leading-tight">
+          Moving Moments
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-espressoMuted font-light leading-relaxed">
+          Some things are better when you can hear them.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
+
+        <!-- Video 1 -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-espresso">
+            <video
+              class="frame-media frame-video"
+              controls
+              playsinline
+              preload="metadata"
+            >
+              <source src="1000228867.mp4" type="video/mp4" />
+              Your browser can’t play this video.
+            </video>
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">A little moment, in motion</p>
+            <p class="text-[11px] text-espressoMuted mt-1">Press play and stay a while</p>
+          </figcaption>
+        </figure>
+
+        <!-- Video 2 -->
+        <figure class="reveal bg-white/95 p-4 pb-6 rounded-2xl border border-hairline shadow-polaroid">
+          <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-espresso">
+            <video
+              class="frame-media frame-video"
+              controls
+              playsinline
+              preload="metadata"
+            >
+              <source src="1000080237.mp4" type="video/mp4" />
+              Your browser can’t play this video.
+            </video>
+          </div>
+          <figcaption class="mt-4 px-1">
+            <p class="font-serif italic text-lg text-espresso leading-snug">Another one I keep replaying</p>
+            <p class="text-[11px] text-espressoMuted mt-1">Real, unposed, ours</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 4. THE LITTLE THINGS ARCHIVE (INTERACTIVE REVEAL NOTES)   -->
+    <!-- ========================================================= -->
+    <section id="little-things" class="max-w-5xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+      <div class="reveal text-center max-w-2xl mx-auto mb-14">
+        <p class="uppercase tracking-[0.22em] text-[11px] text-sage font-medium mb-3">
+          Echoes From Our Chat
+        </p>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-espresso leading-tight">
+          The Little Things Archive
+        </h2>
+        <p class="mt-4 text-sm sm:text-base text-espressoMuted font-light">
+          Tap each linen card to open a small truth from our everyday messages.
+        </p>
+      </div>
+
+      <div class="reveal grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Note 1 -->
+        <button
+          onclick="toggleNoteCard(this)"
+          class="note-card text-left bg-parchment hover:bg-parchmentDark/65 border border-hairline rounded-3xl p-7 sm:p-8 shadow-card focus:outline-none group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-sage font-medium">
+              01 &nbsp;•&nbsp; How Every Day Begins
+            </span>
+            <span class="note-icon text-terracotta text-lg transition-transform duration-300">♡</span>
+          </div>
+          <h3 class="font-serif text-2xl sm:text-3xl text-espresso">
+            “Morning momo” / “Good morning tavuuuu”
+          </h3>
+          <div class="note-content hidden mt-4 pt-4 border-t border-hairline/80 text-xs sm:text-sm text-espressoMuted font-light leading-relaxed">
+            No matter the timezone, the workload, or how late the night before was, our first instinct is always to greet each other softly—setting the warmth for the entire day ahead.
+          </div>
+          <p class="note-hint mt-3 text-[11px] text-espressoMuted/75 italic">
+            Tap to unfold note…
           </p>
-          <p>
-            I love how real we are. I love that you hate fake posed photos and only care about living the moment. I love our chaotic Bangalore walks, standing under golden lights together, surviving long distance one late-night call at a time, and the fire between us that has never faded for even a second.
+        </button>
+
+        <!-- Note 2 -->
+        <button
+          onclick="toggleNoteCard(this)"
+          class="note-card text-left bg-parchment hover:bg-parchmentDark/65 border border-hairline rounded-3xl p-7 sm:p-8 shadow-card focus:outline-none group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-terracotta font-medium">
+              02 &nbsp;•&nbsp; Across Any Distance
+            </span>
+            <span class="note-icon text-terracotta text-lg transition-transform duration-300">♡</span>
+          </div>
+          <h3 class="font-serif text-2xl sm:text-3xl text-espresso">
+            “*forehead kiss*”
+          </h3>
+          <div class="note-content hidden mt-4 pt-4 border-t border-hairline/80 text-xs sm:text-sm text-espressoMuted font-light leading-relaxed">
+            Even through a screen, a simple forehead kiss carries everything—reassurance when you’re tired, comfort when days get overwhelming, and the quiet promise that I’m right beside you.
+          </div>
+          <p class="note-hint mt-3 text-[11px] text-espressoMuted/75 italic">
+            Tap to unfold note…
           </p>
-          <p>
-            Thank you for being my calm, my best friend, my biggest distraction, and my whole heart. Here is to five years behind us and a lifetime of adventures ahead.
+        </button>
+
+        <!-- Note 3 -->
+        <button
+          onclick="toggleNoteCard(this)"
+          class="note-card text-left bg-parchment hover:bg-parchmentDark/65 border border-hairline rounded-3xl p-7 sm:p-8 shadow-card focus:outline-none group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-sage font-medium">
+              03 &nbsp;•&nbsp; Your Favorite Philosophy
+            </span>
+            <span class="note-icon text-terracotta text-lg transition-transform duration-300">♡</span>
+          </div>
+          <h3 class="font-serif text-2xl sm:text-3xl text-espresso">
+            “Living in the moment”
+          </h3>
+          <div class="note-content hidden mt-4 pt-4 border-t border-hairline/80 text-xs sm:text-sm text-espressoMuted font-light leading-relaxed">
+            You taught me that the best memories aren’t staged for every backdrop—they happen when we put the phone down, laugh until our cheeks hurt, and actually live inside the moment.
+          </div>
+          <p class="note-hint mt-3 text-[11px] text-espressoMuted/75 italic">
+            Tap to unfold note…
           </p>
+        </button>
+
+        <!-- Note 4 -->
+        <button
+          onclick="toggleNoteCard(this)"
+          class="note-card text-left bg-parchment hover:bg-parchmentDark/65 border border-hairline rounded-3xl p-7 sm:p-8 shadow-card focus:outline-none group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-terracotta font-medium">
+              04 &nbsp;•&nbsp; Unspoken Grace
+            </span>
+            <span class="note-icon text-terracotta text-lg transition-transform duration-300">♡</span>
+          </div>
+          <h3 class="font-serif text-2xl sm:text-3xl text-espresso">
+            “Even on busy Sundays”
+          </h3>
+          <div class="note-content hidden mt-4 pt-4 border-t border-hairline/80 text-xs sm:text-sm text-espressoMuted font-light leading-relaxed">
+            “Haan shona I understand.” Whether it’s family errands, exhausting weeks, or hectic schedules, we never hold busy days against each other—we just hold space and feel like home.
+          </div>
+          <p class="note-hint mt-3 text-[11px] text-espressoMuted/75 italic">
+            Tap to unfold note…
+          </p>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 5. CLOSING LETTER & INTERACTIVE KEEPSAKE                  -->
+    <!-- ========================================================= -->
+    <section id="letter" class="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-28 sm:pb-36">
+      <div class="reveal bg-parchment border border-hairline rounded-[2rem] p-8 sm:p-14 shadow-soft relative overflow-hidden">
+        <!-- Subtle decorative watermark hollow heart -->
+        <div class="absolute -right-8 -bottom-10 text-[160px] text-terracotta/[0.06] pointer-events-none select-none leading-none">
+          ♡
         </div>
-        <div class="mt-8 font-serif italic text-2xl text-espresso">
-          Forever yours,<br>
-          Momo ♡
+
+        <p class="uppercase tracking-[0.22em] text-[11px] text-sage font-medium mb-6">
+          A Quiet Letter For You
+        </p>
+
+        <div class="font-serif text-xl sm:text-2xl text-espresso leading-relaxed space-y-6 font-normal">
+          <p>
+            Dearest Tavu,
+          </p>
+          <p class="text-espresso/90 text-lg sm:text-[22px] leading-[1.75]">
+            It still makes me smile that all of this began with three simple words and a little hollow heart—<span class="italic text-terracotta">“hello stranger ♡”</span>—back on July 20, 2020. We weren’t strangers for very long.
+          </p>
+          <p class="text-espresso/90 text-lg sm:text-[22px] leading-[1.75]">
+            Over six years, across different cities, late-night calls, Purdue chapters, busy Sundays, and thousands of small check-ins, you have remained the softest, most genuine part of my life. I know you don’t care for flashy things or flowers that wilt—you care about sincerity, presence, and the quiet comfort of being truly understood.
+          </p>
+          <p class="text-espresso/90 text-lg sm:text-[22px] leading-[1.75]">
+            Thank you for being my safe place, my favorite candid laugh, and my best friend. Here is to every ordinary day and every unposed moment still waiting for us.
+          </p>
+          <div class="pt-4">
+            <p class="italic text-espressoMuted text-lg sm:text-xl">
+              Always yours,
+            </p>
+            <p class="font-serif text-2xl sm:text-3xl text-espresso mt-1 flex items-center gap-2">
+              <span>Mukund</span>
+              <span class="text-terracotta text-xl">♡</span>
+            </p>
+          </div>
         </div>
-        <div class="mt-10 text-center">
+
+        <!-- Interactive Keepsake Button -->
+        <div class="mt-12 pt-8 border-t border-hairline flex flex-col items-center text-center">
           <button
-            onclick="spawnHeartBurst(event)"
-            class="px-6 py-3 rounded-full bg-parchment hover:bg-parchmentDark text-espresso text-sm transition-all border border-hairline inline-flex items-center gap-2 shadow-card"
+            id="keepsake-btn"
+            onclick="triggerKeepsake(event)"
+            class="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-espresso text-alabaster hover:bg-espresso/90 transition-all duration-300 shadow-card active:scale-95 text-sm tracking-wide"
           >
             <span>Tap to send a</span>
-            <span class="text-terracotta text-lg">♡</span>
+            <span class="text-terracotta text-lg leading-none group-hover:scale-125 transition-transform">♡</span>
           </button>
+
+          <p
+            id="keepsake-message"
+            class="mt-4 text-xs sm:text-sm text-espressoMuted font-light min-h-[24px] transition-opacity duration-500"
+          >
+            Just like July 20, 2020.
+          </p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="text-center py-12 text-xs text-espressoMuted border-t border-hairline/60">
-    Made with love by Momo for Tavu &nbsp;•&nbsp; July 20, 2020 &amp; November 14, 2021 &nbsp;•&nbsp; ♡
+  <!-- Minimalist Footer -->
+  <footer class="relative z-10 border-t border-hairline/70 py-8 text-center text-xs text-espressoMuted/80">
+    <p class="font-serif italic text-sm text-espressoMuted">
+      “hello stranger ♡” &nbsp;•&nbsp; July 20, 2020 — Always
+    </p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT: COUNTERS, INTERACTIVITY & AMBIENT PARTICLES   -->
+  <!-- ========================================================= -->
   <script>
-    // Live Anniversary Counter
-    const startTarget = new Date('2021-11-14T00:00:00');
-    function updateCounter() {
+    // -----------------------------------------------------------
+    // 1. LIVE ELAPSED COUNTER SINCE JULY 20, 2020
+    // -----------------------------------------------------------
+    function updateElapsedCounter() {
+      const startDate = new Date('2020-07-20T00:00:00');
       const now = new Date();
-      const diffMs = Math.max(0, now - startTarget);
-      const totalMins = Math.floor(diffMs / 60000);
-      const totalHours = Math.floor(totalMins / 60);
-      const totalDays = Math.floor(totalHours / 24);
-      const years = Math.floor(totalDays / 365.2425);
-      const remMins = totalMins % 60;
+
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+      let hours = now.getHours() - startDate.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+
+      if (hours < 0) {
+        hours += 24;
+        days -= 1;
+      }
+      if (days < 0) {
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+        months -= 1;
+      }
+      if (months < 0) {
+        months += 12;
+        years -= 1;
+      }
 
       document.getElementById('cnt-years').textContent = years;
-      document.getElementById('cnt-days').textContent = totalDays.toLocaleString();
-      document.getElementById('cnt-hours').textContent = totalHours.toLocaleString();
-      document.getElementById('cnt-mins').textContent = String(remMins).padStart(2, '0');
-    }
-    updateCounter();
-    setInterval(updateCounter, 15000);
+      document.getElementById('cnt-months').textContent = months;
+      document.getElementById('cnt-days').textContent = days;
+      document.getElementById('cnt-hours').textContent = String(hours).padStart(2, '0');
 
-    // Toggle Messages vs Words Duel
+      const totalDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+      document.getElementById('live-seconds-note').textContent =
+        `${totalDays.toLocaleString()} days, ${minutes} minutes, and ${seconds} seconds of us.`;
+    }
+    updateElapsedCounter();
+    setInterval(updateElapsedCounter, 1000);
+
+    // -----------------------------------------------------------
+    // 2. INTERACTIVE 50/50 SPLIT TOGGLE (MESSAGES VS WORDS)
+    // -----------------------------------------------------------
     function switchSplitMode(mode) {
       const btnMsgs = document.getElementById('btn-split-msgs');
       const btnWords = document.getElementById('btn-split-words');
@@ -646,7 +1038,7 @@
       const tavuStat = document.getElementById('tavu-stat');
       const barMukund = document.getElementById('bar-mukund');
       const barTavu = document.getElementById('bar-tavu');
-      const splitCaption = document.getElementById('split-caption');
+      const caption = document.getElementById('split-caption');
 
       if (mode === 'messages') {
         btnMsgs.className = 'px-3.5 py-1.5 rounded-full bg-espresso text-alabaster transition-all font-medium';
@@ -655,131 +1047,210 @@
         tavuStat.textContent = '17,955 messages (49.95%)';
         barMukund.style.width = '50.05%';
         barTavu.style.width = '49.95%';
-        splitCaption.innerHTML = 'Separated by just <span class="text-espresso font-medium">38 messages</span> across three whole months. Neither of us ever carries the conversation alone.';
+        caption.innerHTML =
+          'Separated by just <span class="text-espresso font-medium">38 messages</span> across three whole months. Neither of us ever carries the conversation alone.';
       } else {
         btnWords.className = 'px-3.5 py-1.5 rounded-full bg-espresso text-alabaster transition-all font-medium';
         btnMsgs.className = 'px-3.5 py-1.5 rounded-full text-espressoMuted hover:text-espresso transition-all';
-        mukundStat.textContent = '78,053 words (48%)';
-        tavuStat.textContent = '84,777 words (52%)';
+        mukundStat.textContent = '78,053 words (47.9%)';
+        tavuStat.textContent = '84,777 words (52.1%)';
         barMukund.style.width = '47.9%';
         barTavu.style.width = '52.1%';
-        splitCaption.innerHTML = 'A total of <span class="text-espresso font-medium">162,830 words</span> shared in 90 days. Tavu writes slightly longer, richer thoughts while Momo matches sentence for sentence.';
+        caption.innerHTML =
+          'Together we wrote <span class="text-espresso font-medium">162,830 words</span> in 90 days—more than two full novels just about our lives.';
       }
     }
 
-    // Signature Words Explorer
-    const wordData = {
+    // -----------------------------------------------------------
+    // 3. SIGNATURE WORDS INTERACTIVE EXPLORER
+    // -----------------------------------------------------------
+    const wordStories = {
       shona: {
-        title: '“shona” — said 658 times by Momo',
-        desc: 'More than seven times every single day, whether softening a busy afternoon, checking in after work, or reminding you that you are always cared for.'
+        title: '“shona” — said 658 times by Mukund',
+        desc: 'More than seven times every single day—whether softening a busy afternoon, checking in after work, or reminding you that you’re always cared for.',
       },
       tavu: {
-        title: '“tavu” — said 639 times by Momo',
-        desc: 'Usually stretched out in voice notes and late-night texts when I am waiting for you to finish your day so I can finally hear your voice.'
+        title: '“tavu” — said 639 times by Mukund',
+        desc: 'My favorite name to call out first thing in the morning (“Good morning tavuuuu”) and last thing before falling asleep.',
       },
       baby: {
-        title: '“baby” — said 492 times by Momo',
-        desc: 'Reserved for our closest, softest moments when the rest of the world fades away and it is just the two of us.'
+        title: '“baby” — said 492 times by Mukund',
+        desc: 'Reserved for the softest moments—when we’re being extra affectionate, reassuring each other, or just missing being in the same room.',
       },
       momo: {
         title: '“momo” — said 584 times by Tavu',
-        desc: 'Your special name for me. Every "Morning momo" from you instantly sets the tone for my whole day.'
+        desc: '“Morning momo”, “Oh okay momo”, “Cutie momo”—your signature nickname for me that instantly makes even the most stressful day feel light.',
       },
       its: {
         title: '“it’s” — said 654 times by Tavu',
-        desc: 'A staple of our casual, quick-fire updates back and forth when we are narrating our day to each other.'
+        desc: 'Because you’re always telling me what’s happening in your world, sharing your honest thoughts, and letting me into every detail of your day.',
       },
       dont: {
         title: '“don’t” — said 530 times by Tavu',
-        desc: 'Usually paired with teasing, playful warnings, or laughing off something ridiculous we just talked about.'
+        desc: 'Half playful teasing when I’m being dramatic, and half caring reminders to take care of myself—always looking out for me.',
       },
       love: {
-        title: '“love” — #1 across our entire chat',
-        desc: 'The bedrock of everything we do. It never feels repetitive because every time we say it, we mean it more than the last.'
-      }
+        title: '“love” — the biggest word in our cloud',
+        desc: 'Right at the center of all 162,830 words. Not something we save for special occasions, but the quiet foundation underneath everything we say.',
+      },
     };
 
     function selectWord(key) {
-      document.querySelectorAll('.word-pill').forEach(p => {
-        p.classList.remove('bg-sage', 'text-alabaster', 'border-sage', 'bg-terracotta');
-        p.classList.add('bg-parchment', 'text-espresso', 'border-hairline');
+      const story = wordStories[key];
+      if (!story) return;
+
+      // Reset all pills
+      document.querySelectorAll('.word-pill').forEach((pill) => {
+        pill.classList.remove('bg-sage', 'bg-terracotta', 'text-alabaster', 'border-sage', 'border-terracotta');
+        pill.classList.add('bg-parchment', 'text-espresso', 'border-hairline');
       });
-      const btn = document.querySelector(`[data-word="${key}"]`);
-      if (btn) {
-        btn.classList.remove('bg-parchment', 'text-espresso', 'border-hairline');
-        btn.classList.add('bg-sage', 'text-alabaster', 'border-sage');
+
+      // Highlight selected pill
+      const activePill = document.querySelector(`[data-word="${key}"]`);
+      if (activePill) {
+        activePill.classList.remove('bg-parchment', 'text-espresso', 'border-hairline');
+        const isTavuOrLove = ['momo', 'its', 'dont', 'love'].includes(key);
+        activePill.classList.add(
+          isTavuOrLove ? 'bg-terracotta' : 'bg-sage',
+          isTavuOrLove ? 'border-terracotta' : 'border-sage',
+          'text-alabaster'
+        );
       }
-      const data = wordData[key];
-      if (data) {
-        document.getElementById('word-detail-title').textContent = data.title;
-        document.getElementById('word-detail-desc').textContent = data.desc;
+
+      const box = document.getElementById('word-detail-box');
+      box.style.opacity = '0.5';
+      setTimeout(() => {
+        document.getElementById('word-detail-title').textContent = story.title;
+        document.getElementById('word-detail-desc').textContent = story.desc;
+        box.style.opacity = '1';
+      }, 140);
+    }
+
+    // -----------------------------------------------------------
+    // 4. INTERACTIVE LINEN NOTE CARDS (FLIP / UNFOLD)
+    // -----------------------------------------------------------
+    function toggleNoteCard(card) {
+      const content = card.querySelector('.note-content');
+      const hint = card.querySelector('.note-hint');
+      const icon = card.querySelector('.note-icon');
+      const isHidden = content.classList.contains('hidden');
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        hint.textContent = 'Tap to fold';
+        icon.style.transform = 'scale(1.25)';
+        card.classList.add('bg-white/90');
+      } else {
+        content.classList.add('hidden');
+        hint.textContent = 'Tap to unfold note…';
+        icon.style.transform = 'scale(1)';
+        card.classList.remove('bg-white/90');
       }
     }
 
-    // Floating Heart Burst
-    function spawnHeartBurst(e) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      for (let i = 0; i < 8; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'floating-heart font-serif text-terracotta text-2xl';
+    // -----------------------------------------------------------
+    // 5. FLOATING HOLLOW WHITE HEART (♡) KEEPSAKE INTERACTION
+    // -----------------------------------------------------------
+    const keepsakeNotes = [
+      '“hello stranger ♡” — still my favorite notification.',
+      'Sent a quiet ♡ across the miles to you, Tavu.',
+      'Six years later, and my heart still smiles the exact same way.',
+      'For every unposed moment, every sleepy morning, and every tomorrow ♡',
+      'Always in your corner, shona ♡',
+    ];
+    let keepsakeIndex = 0;
+
+    function spawnHeartBurst(event) {
+      const originX = event ? event.clientX : window.innerWidth / 2;
+      const originY = event ? event.clientY : window.innerHeight / 2;
+
+      for (let i = 0; i < 6; i++) {
+        const heart = document.createElement('span');
         heart.textContent = '♡';
-        const offsetX = (Math.random() - 0.5) * 160;
-        heart.style.left = `${rect.left + rect.width / 2 + offsetX}px`;
-        heart.style.top = `${rect.top - 10}px`;
-        heart.style.animationDelay = `${i * 0.07}s`;
+        heart.className = 'floating-heart text-terracotta font-serif';
+        const size = 18 + Math.random() * 16;
+        const offsetX = (Math.random() - 0.5) * 110;
+        const delay = i * 90;
+
+        heart.style.left = `${originX + offsetX}px`;
+        heart.style.top = `${originY - 10}px`;
+        heart.style.fontSize = `${size}px`;
+        heart.style.animationDelay = `${delay}ms`;
+
         document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 3000);
+        setTimeout(() => heart.remove(), 3400);
       }
     }
 
-    // Ambient Floating Dust Canvas
-    const canvas = document.getElementById('dust-canvas');
-    const ctx = canvas.getContext('2d');
-    let width, height, particles;
+    function triggerKeepsake(event) {
+      spawnHeartBurst(event);
+      const msgEl = document.getElementById('keepsake-message');
+      msgEl.style.opacity = '0';
+      setTimeout(() => {
+        msgEl.textContent = keepsakeNotes[keepsakeIndex % keepsakeNotes.length];
+        msgEl.style.opacity = '1';
+        keepsakeIndex += 1;
+      }, 220);
+    }
 
-    function initCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      particles = Array.from({ length: 22 }, () => ({
+    // -----------------------------------------------------------
+    // 6. SCROLL REVEAL OBSERVER
+    // -----------------------------------------------------------
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+    // -----------------------------------------------------------
+    // 7. SUBTLE AMBIENT FLOATING DUST / WARM LIGHT PARTICLES
+    // -----------------------------------------------------------
+    window.addEventListener('load', () => {
+      const canvas = document.getElementById('dust-canvas');
+      const ctx = canvas.getContext('2d');
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = Array.from({ length: 28 }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        r: Math.random() * 2 + 1,
-        vy: -(Math.random() * 0.22 + 0.06),
-        vx: (Math.random() - 0.5) * 0.12,
-        alpha: Math.random() * 0.3 + 0.1
+        r: 1 + Math.random() * 2.2,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: -0.12 - Math.random() * 0.2,
+        alpha: 0.18 + Math.random() * 0.28,
       }));
-    }
 
-    function animateCanvas() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.y += p.vy;
-        p.x += p.vx;
-        if (p.y < -10) p.y = height + 10;
-        if (p.x < -10) p.x = width + 10;
-        if (p.x > width + 10) p.x = -10;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(196, 143, 126, ${p.alpha})`;
-        ctx.fill();
-      });
-      requestAnimationFrame(animateCanvas);
-    }
+      function animateDust() {
+        ctx.clearRect(0, 0, width, height);
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
 
-    window.addEventListener('resize', initCanvas);
-    initCanvas();
-    animateCanvas();
+          if (p.y < -10) p.y = height + 10;
+          if (p.x < -10) p.x = width + 10;
+          if (p.x > width + 10) p.x = -10;
 
-    // Scroll Reveal Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(196, 143, 126, ${p.alpha})`;
+          ctx.fill();
         }
-      });
-    }, { threshold: 0.12 });
+        requestAnimationFrame(animateDust);
+      }
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      animateDust();
+    });
   </script>
 </body>
 </html>
